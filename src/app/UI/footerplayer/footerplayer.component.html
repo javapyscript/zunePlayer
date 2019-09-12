@@ -21,7 +21,7 @@
                 {{this.currSongObj.trackName}}
               </div>
               <div class="row">
-                  <input #trackSeekbar type="range" id="seek" value="0" [max]="this.currSong.duration" [(ngModel)]="this.curtime" (change)="this.seekTrack($event)"/>
+                  <input #trackSeekbar type="range" id="seek" value="0" [max]="this.tempSong.duration" [(ngModel)]="this.curtime" (change)="this.seekTrack($event)"/>
               </div>
               <div class="row" style="font-size:0.8rem;">
                 {{this.timePassed}}
@@ -34,7 +34,7 @@
       </div>
       <div class="col-4 flexRight">
         <a (click)="this.artistsData.playPrevSong()" class="rew" style="padding:2px;"><img src="assets/icons/rew.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
-        <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.currSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
+        <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.tempSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
         <a (click)="this.artistsData.playNextSong()" class="ff" style="padding:2px;"><img src="assets/icons/ff.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
       </div>
     </div>

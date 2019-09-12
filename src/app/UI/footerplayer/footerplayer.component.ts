@@ -14,6 +14,7 @@ export class FooterplayerComponent implements OnInit {
   timePassed:string = "0:0";
   timeLeft = 0;
   currSongObj = {'trackName': "No Song selected"}
+  tempSong;
 
   //visualization vars
   context;
@@ -43,25 +44,27 @@ export class FooterplayerComponent implements OnInit {
       console.log(this.currAlbum);
     });
 
-    this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
-    this.currSong.crossOrigin = "anonymous";
+    //this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
+    this.tempSong = new Audio();
+    //this.currSong.crossOrigin = "anonymous";
+    this.tempSong.crossOrigin = "anonymous";
     this.context = new AudioContext();
-    this.src = this.context.createMediaElementSource(this.currSong);
+    this.src = this.context.createMediaElementSource(this.tempSong);
     let simple = this.renderer.listen(this.trackSeekBar.nativeElement, 'change', (evt) => {
-      this.currSong.currentTime = this.trackSeekBar.nativeElement.value;
+      this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
       
-      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.currSong.duration);
+      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.tempSong.duration);
     });
 
-    this.currSong.addEventListener('timeupdate', ()=>{
-      let minutes = Math.floor(parseInt(this.currSong.currentTime, 10) / 60);
-      let seconds = parseInt(this.currSong.currentTime, 10) - minutes * 60;
+    this.tempSong.addEventListener('timeupdate', ()=>{
+      let minutes = Math.floor(parseInt(this.tempSong.currentTime, 10) / 60);
+      let seconds = parseInt(this.tempSong.currentTime, 10) - minutes * 60;
       this.timePassed = minutes.toString() + ":" + seconds.toString();
-      this.curtime = parseInt(this.currSong.currentTime, 10);
+      this.curtime = parseInt(this.tempSong.currentTime, 10);
       this.renderer.setAttribute(this.trackSeekBar.nativeElement, "value", this.curtime.toString());
     });
 
-    this.currSong.addEventListener('ended', ()=>{
+    this.tempSong.addEventListener('ended', ()=>{
       console.log("Finished");
       this.artistsData.playNextSong();
     });
@@ -74,22 +77,24 @@ export class FooterplayerComponent implements OnInit {
 
 
   controlTrack(){
-    console.log(this.currSong);
-    if(this.currSong.paused){
-      this.currSong.play();
+    console.log(this.tempSong);
+
+    if(this.tempSong.paused){
+      //this.currSong.play();
+      this.tempSong.play();
     }
     else{
-      this.currSong.pause();
+      this.tempSong.pause();
     }
   }
 
   stopTrack(){
-    this.currSong.pause();
+    this.tempSong.pause();
   }
 
   startTrack(previewUrl){
-    this.currSong.src = previewUrl;
-    this.currSong.play();
+    this.tempSong.src = previewUrl;
+    this.tempSong.play();
 
     let analyser = this.context.createAnalyser();
     this.canvas.nativeElement.width = window.innerWidth;
@@ -138,8 +143,8 @@ export class FooterplayerComponent implements OnInit {
 
   seekTrack(event:boolean){
     
-      this.currSong.currentTime = this.trackSeekBar.nativeElement.value;
-      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.currSong.duration);
+      this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
+      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.tempSong.duration);
       //this.trackSeekBar.nativeElement.attr("max", this.currSong.duration); 
    
     

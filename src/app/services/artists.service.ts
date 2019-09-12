@@ -15,7 +15,7 @@ export class ArtistsService {
   ;
   currAlbum = {collectionId : 0, artworkUrl60:"assets/icons/blankImage.png"};
   currAlbumChange = new Subject<null>();
-  currSong = {};
+  songPlaying = {};
   currSongChange = new Subject<any>();
 
   artists = [
@@ -111,7 +111,7 @@ export class ArtistsService {
     this.currAlbum.collectionId = song.collectionId;
     this.currAlbum.artworkUrl60 = song.artworkUrl60;
     this.currAlbumChange.next();
-    this.currSong = song;
+    this.songPlaying = song;
     this.currSongChange.next(song);
     //this.artistsData.filteredSongs = this.songs;
   }
