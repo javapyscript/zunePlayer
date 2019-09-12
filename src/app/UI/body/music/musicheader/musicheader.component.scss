@@ -1,0 +1,68 @@
+.navbar{
+    padding: 0rem 0.5rem;
+}
+
+a.nav-item.nav-link {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.1);
+    padding: 0rem 0.6rem;
+    font-weight: 500;
+}
+
+.navbar-nav{
+    padding-right: 2rem;
+}
+
+
+nav {
+    background-color: white;
+}
+
+a.nav-item.nav-link.active{
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.slide-right {
+	-webkit-animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+    @keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+
+/*.item1{
+    animation-delay: 0.1s;
+}
+.item2{
+    animation-delay: 0.2s;
+}
+.item3{
+    animation-delay: 0.3s;
+}
+.item4{
+    animation-delay: 0.4s;
+}*/
+  
+
+
+
+

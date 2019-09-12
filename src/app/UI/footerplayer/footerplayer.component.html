@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4 flexCenter">
+        <!--audio controls>
+            
+            <source src="assets/music/PrimaDonna Girl.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio-->
+        <canvas #canvas></canvas>
+        
+        
+       
+        <div class="container mediaControls flexCenter">
+          <div class="row">
+            <div class="col-2">
+                <img id="albumArt" src={{this.currAlbum.artworkUrl60}} style="padding:2px;height:2.5rem;width:2.5rem"/>
+            </div>
+            <div class="col-10">
+              <div class="row" style="font-size:0.8rem;">
+                {{this.currSongObj.trackName}}
+              </div>
+              <div class="row">
+                  <input #trackSeekbar type="range" id="seek" value="0" [max]="this.currSong.duration" [(ngModel)]="this.curtime" (change)="this.seekTrack($event)"/>
+              </div>
+              <div class="row" style="font-size:0.8rem;">
+                {{this.timePassed}}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="col-4 flexRight">
+        <a (click)="this.artistsData.playPrevSong()" class="rew" style="padding:2px;"><img src="assets/icons/rew.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
+        <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.currSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
+        <a (click)="this.artistsData.playNextSong()" class="ff" style="padding:2px;"><img src="assets/icons/ff.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
+      </div>
+    </div>
+</div>
+
+
+
+
+

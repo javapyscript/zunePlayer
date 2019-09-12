@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 slide-right">
+      <p class="listTitle">ARTISTS</p>
+      <ul class="bordered-col">
+        <li [ngClass]="{active: artist.highlighted}" (click)="this.artistsData.selectAlbumsByArtist(artist)" class="noselect lifont" *ngFor="let artist of this.artistsData.artists">{{artist.artistName}}</li>
+      </ul>
+    </div>
+    <div class="col-5 slide-right" style="padding-left:2rem;">
+      <p class="listTitle">ALBUMS</p>
+      <ul class="bordered-col">
+        
+          <div class="row">
+            <div class="albumArtDiv" *ngFor="let album of this.artistsData.filteredAlbums" [ngClass]="{'selectedAlbum': this.artistsData.currAlbum.collectionId === album.collectionId}">
+                <img (click)="this.artistsData.filterTracks(album)" class="albumArt" [src]="album.artworkUrl100"/>
+            </div>
+            
+          </div>
+       
+      </ul>
+    </div>
+    <div class="col-5 slide-right">
+      <p class="listTitle">SONGS</p>
+      <ul class="bordered-col">
+        <li class="noselect lifont" [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">{{song.trackName}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

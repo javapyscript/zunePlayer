@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#" style="opacity: 0.7">ZunePlayer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" *ngFor="let menuItem of this.menuItems; let ind = index;" 
+        (click)="setCurrentMenu(ind)"
+        [routerLink]="'/' + menuItem.name" routerLinkActive="active">
+        {{menuItem.name}}
+      </a>
+      
+      <!--<a class="nav-item nav-link" href="#">home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#" (click)="setCurrentMenu($event)">features</a>
+      <a class="nav-item nav-link" href="#">pricing</a>
+      <a class="nav-item nav-link" href="#">disabled</a>-->
+    </div>
+  </div>
+</nav>

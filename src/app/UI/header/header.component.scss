@@ -1,0 +1,28 @@
+/*.navbar{
+    padding: 0rem 0.5rem;
+}*/
+
+a.nav-item.nav-link {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    color: rgba(0, 0, 0, 0.1);
+    padding: 0rem 0.5rem;
+}
+
+a.navbar-brand {
+    color: rgba(255,20,147,1);
+    font-size: x-large;
+}
+
+nav {
+    background-color: white;
+}
+
+a.nav-item.nav-link.active{
+    color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+
+
