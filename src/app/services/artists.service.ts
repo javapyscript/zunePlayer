@@ -42,7 +42,7 @@ export class ArtistsService {
     {"wrapperType":"artist", "artistType":"Artist", "artistName":"Drake", "artistLinkUrl":"https://music.apple.com/us/artist/drake/271256?uo=4", "artistId":271256, "amgArtistId":905792, "primaryGenreName":"Hip-Hop/Rap", "primaryGenreId":18}*/
   ];
 
-  constructor(private itunes:ItunesService, private player:PlayerService) {
+  constructor(public itunes:ItunesService, public player:PlayerService) {
     
     this.artists.forEach(artist=>{
       this.itunes.getAlbum(artist.artistId).subscribe(albums=>{

@@ -12,8 +12,8 @@ const API = {
   providedIn: 'root'
 })
 export class ItunesService {
-  private _albums: Array<any> = [];
-  private _artistId: number = 0;
+  //private _albums: Array<any> = [];
+  //private _artistId: number = 0;
   tracksSubject = new Subject;
 
   constructor(private http: HttpClient) {}

@@ -29,7 +29,7 @@ export class FooterplayerComponent implements OnInit {
 
   currAlbum = {collectionId : 0, artworkUrl60:"assets/icons/blankImage.png"};
 
-  constructor(private renderer: Renderer2, private player:PlayerService, private artistsData: ArtistsService) { }
+  constructor(public renderer: Renderer2, public player:PlayerService, public artistsData: ArtistsService) { }
 
   ngOnInit() {
 

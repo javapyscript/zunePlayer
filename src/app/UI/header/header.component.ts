@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   
 
-  private menuItems = [
+  public menuItems = [
     {name: "music", status: "active"},
     {name: "videos", status: "inactive"},
     {name: "pictures", status: "inactive"}

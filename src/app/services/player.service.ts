@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
 export class PlayerService {
   constructor() {}
 
-  private playTrackSource = new Subject<string>();
-  private pauseTrackSource = new Subject();
-  private trackEndedSource = new Subject();
+  public playTrackSource = new Subject<string>();
+  public pauseTrackSource = new Subject();
+  public trackEndedSource = new Subject();
 
   playTrack$ = this.playTrackSource.asObservable();
   pauseTrack$ = this.pauseTrackSource.asObservable();

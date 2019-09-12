@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MusicheaderComponent implements OnInit {
 
-  private menuItems = [
+  public menuItems = [
     {name: "ARTISTS", status: "active"},
     {name: "GENRES", status: "inactive"},
     {name: "ALBUMS", status: "inactive"},

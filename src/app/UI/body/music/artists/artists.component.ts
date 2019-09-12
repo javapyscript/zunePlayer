@@ -17,8 +17,8 @@ export class ARTISTSComponent implements OnInit {
   songs = [];*/
   
 
-  constructor(private tracksData: TracksDataService, private artistsData: ArtistsService,
-    private itunes:ItunesService, private player: PlayerService) { }
+  constructor(public tracksData: TracksDataService, public artistsData: ArtistsService,
+    public itunes:ItunesService, public player: PlayerService) { }
 
   ngOnInit() {
     //this.artists = this.artistsData.artists;
