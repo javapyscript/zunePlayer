@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ import { ItunesService } from './services/itunes.service';
 import { ArtistsService } from './services/artists.service';
 import { PlayerService } from './services/player.service';
 import { HttpClientModule, HttpClientJsonpModule  } from '@angular/common/http';
+import { AlbumartComponent } from './UI/body/music/albums/albumart/albumart.component';
 
 const appRoutes: Routes = [
   { 
@@ -60,16 +62,18 @@ const appRoutes: Routes = [
     SONGSComponent,
     ALBUMSComponent,
     PLAYLISTSComponent,
-    FooterplayerComponent
+    FooterplayerComponent,
+    AlbumartComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      //{ enableTracing: true } // <-- debugging purposes only
     )
   ],
   providers: [TracksDataService, ItunesService, ArtistsService, PlayerService],

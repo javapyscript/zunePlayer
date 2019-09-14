@@ -46,6 +46,7 @@ export class ArtistsService {
     
     this.artists.forEach(artist=>{
       this.itunes.getAlbum(artist.artistId).subscribe(albums=>{
+        console.log(albums);
         this.albums.push(...albums);
         this.filteredAlbums.push(...albums);
         albums.forEach(album=>{
@@ -64,6 +65,7 @@ export class ArtistsService {
       });
       //this.albums.push(this.itunes.getAlbum(artist.artistId));
     });
+    
     
   }
 
@@ -129,9 +131,22 @@ export class ArtistsService {
       currArtist.highlighted = false;
     });
     artist.highlighted = true;
+    let newAlbumNames = [];
     this.filteredAlbums = this.albums.filter(album=>{
       return album.artistId === artist.artistId;
     });
+    console.log(this.filteredAlbums);
+    this.filteredSongs = [];
+    this.filteredAlbums.forEach(filteredAlbum=>{
+      newAlbumNames.push(filteredAlbum.collectionId);
+    });
+    let newSongs = [];
+    this.songs.forEach(filteredSong=>{
+      if(newAlbumNames.includes(filteredSong.collectionId)){
+        newSongs.push(filteredSong);
+      }
+    });
+    this.filteredSongs = newSongs;
     //this.artistsData.filteredAlbums = this.albums;
   }
 

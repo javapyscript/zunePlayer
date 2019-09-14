@@ -1,0 +1,80 @@
+
+
+
+
+ul{
+    //list-style-type:none;
+    padding:0;
+    overflow:hidden; overflow-y:scroll;
+}
+
+li{
+    padding:0.1rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+li:hover{
+    //color: #2693ff;
+    cursor: default;
+    background-color: #d8d8d9;
+}
+
+li.active{
+    background-color: #d8d8d9;
+    color: #ef21a7;
+}
+
+/* SCROLLBAR */
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(194, 194, 194);
+    border: 5px solid transparent;
+    background-clip: content-box;   /* THIS IS IMPORTANT */
+    //@at-rootheight: 40px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(179, 179, 179);
+    //border: 1px solid rgb(0,0,0);
+    
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(128, 128, 128);
+    //border: 1px solid rgb(0,0,0);
+    
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+    @keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+
+    .container { max-width: 1500px; } 
+
+}

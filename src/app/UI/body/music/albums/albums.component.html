@@ -1,3 +1,32 @@
-<p>
-  albums works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-7 slide-right" style="padding-left:2rem;">
+      <p class="listTitle">ALBUMS</p>
+      <ul class="bordered-col">
+        
+          <div class="row albumArtRow">
+            <div class="albumArtDiv" *ngFor="let album of this.artistsData.filteredAlbums; let ind=index;">
+                <div class="content">
+                  <div class="albumArtImage" [ngClass]="{'selectedAlbum': this.artistsData.currAlbum.collectionId === this.album.collectionId}">
+                      <img class="rs" (click)="this.artistsData.filterTracks(album)" [src]="album.artworkUrl100"/>
+                  </div>
+                  <div class="albumArtDescription">
+                      <span>{{album.collectionName}}</span>
+                      <span>{{album.artistName}}</span>
+                  </div>
+                    
+                </div>
+            </div>
+           
+          </div>
+       
+      </ul>
+    </div>
+    <div class="col-5 slide-right">
+      <p class="listTitle">SONGS</p>
+      <ul class="bordered-col">
+        <li class="noselect lifont" [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">{{song.trackName}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -22,14 +22,23 @@ export class ARTISTSComponent implements OnInit {
 
   ngOnInit() {
     //this.artists = this.artistsData.artists;
-    if(this.artistsData.currAlbum.collectionId !==0){
+    /*if(this.artistsData.currAlbum.collectionId !==0){
       this.artistsData.filteredSongs = this.artistsData.songs.filter(song=>{
         return song.collectionId ==  this.artistsData.currAlbum.collectionId;
       });
     }
     else{
       this.artistsData.filteredSongs = this.artistsData.songs;
-    }
+    }*/
+    /*this.artistsData.songs.forEach(song=>{
+      song.highlighted = false;
+    });*/
+    this.artistsData.artists.forEach(artist=>{
+      artist.highlighted = false;
+    })
+    this.artistsData.filteredSongs = this.artistsData.songs;
+    this.artistsData.filteredAlbums = this.artistsData.albums;
+    this.artistsData.currAlbum.collectionId = 0;
     
     //this.albums = this.artistsData.albums;
     //this.artistsData.filteredSongs = this.songs;

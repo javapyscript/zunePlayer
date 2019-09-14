@@ -69,10 +69,11 @@ input[type="range"]::-ms-fill-upper {
  
 canvas {
   
-  width: 100%;
+  width: 50vw;
   height: 8vh;
   z-index: 80 !important;
   position: absolute;
+  top: 0px;
 }
 
 .mediaControls{

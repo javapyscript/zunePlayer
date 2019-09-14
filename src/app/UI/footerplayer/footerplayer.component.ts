@@ -9,7 +9,7 @@ import { ArtistsService } from 'src/app/services/artists.service';
   styleUrls: ['./footerplayer.component.scss']
 })
 export class FooterplayerComponent implements OnInit {
-  currSong;
+  //currSong;
   curtime = 0;
   timePassed:string = "0:0";
   timeLeft = 0;
@@ -47,9 +47,10 @@ export class FooterplayerComponent implements OnInit {
     //this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
     this.tempSong = new Audio();
     //this.currSong.crossOrigin = "anonymous";
-    this.tempSong.crossOrigin = "anonymous";
+    /*this.tempSong.crossOrigin = "anonymous";
     this.context = new AudioContext();
-    this.src = this.context.createMediaElementSource(this.tempSong);
+    this.src = this.context.createMediaElementSource(this.tempSong);*/
+    
     let simple = this.renderer.listen(this.trackSeekBar.nativeElement, 'change', (evt) => {
       this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
       
@@ -94,13 +95,25 @@ export class FooterplayerComponent implements OnInit {
 
   startTrack(previewUrl){
     this.tempSong.src = previewUrl;
-    this.tempSong.play();
+    
 
-    let analyser = this.context.createAnalyser();
+    /*try {
+      this.context =
+        new (AudioContext)();
+    } catch (error) {
+      window.alert(
+        `Sorry, but your browser doesn't support the Web Audio API!`
+      );
+    }*/
+
+    
+
+    /*let analyser = this.context.createAnalyser();
     this.canvas.nativeElement.width = window.innerWidth;
     this.canvas.nativeElement.height = window.innerHeight;
     let ctx = this.canvas.nativeElement.getContext("2d");
     this.src.connect(analyser);
+    this.src.connect(this.context.destination);
     analyser.connect(this.context.destination);
     analyser.fftSize = 256;
     let bufferLength = analyser.frequencyBinCount;
@@ -138,7 +151,8 @@ export class FooterplayerComponent implements OnInit {
     }
 
     //audio.play();
-    renderFrame();
+    renderFrame();*/
+    this.tempSong.play();
   }
 
   seekTrack(event:boolean){
