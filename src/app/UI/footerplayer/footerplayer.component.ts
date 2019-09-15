@@ -1,20 +1,31 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, ChangeDetectorRef } from '@angular/core';
-import { ItunesService } from 'src/app/services/itunes.service';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { PlayerService } from 'src/app/services/player.service';
 import { ArtistsService } from 'src/app/services/artists.service';
+
+import { Options } from 'ng5-slider';
+
 
 @Component({
   selector: 'app-footerplayer',
   templateUrl: './footerplayer.component.html',
-  styleUrls: ['./footerplayer.component.scss']
+  styleUrls: ['./footerplayer.component.scss'],
+  //encapsulation: ViewEncapsulation.None
 })
 export class FooterplayerComponent implements OnInit {
   //currSong;
+
+  options: Options = {
+    floor: 0,
+    ceil: 100
+  };
+
+
   curtime = 0;
   timePassed:string = "0:0";
   timeLeft = 0;
   currSongObj = {'trackName': "No Song selected"}
   tempSong;
+  volume = 50;
 
   //visualization vars
   context;
@@ -47,6 +58,7 @@ export class FooterplayerComponent implements OnInit {
 
     //this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
     this.tempSong = new Audio();
+    this.tempSong.volume = this.volume / 100;
     //this.currSong.crossOrigin = "anonymous";
     this.tempSong.crossOrigin = "anonymous";
     this.context = new AudioContext();
@@ -74,6 +86,16 @@ export class FooterplayerComponent implements OnInit {
     this.player.playTrack$.subscribe(previewUrl=>{
       this.startTrack(previewUrl);
     });
+
+    
+  }
+
+  changeVolume(event){
+    console.log(event.target.value);
+    this.volume = event.target.value;
+    this.tempSong.volume = this.volume / 100;
+      
+  
   }
 
 
@@ -96,6 +118,7 @@ export class FooterplayerComponent implements OnInit {
 
   startTrack(previewUrl){
     this.tempSong.src = previewUrl;
+    this.tempSong.volume = this.volume / 100;
     
 
     /*try {

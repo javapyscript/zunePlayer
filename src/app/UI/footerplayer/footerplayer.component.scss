@@ -1,5 +1,5 @@
 
-@media only screen and (min-width : 1200px) {
+  @media only screen and (min-width : 1200px) {
 
     .container { max-width: 1400px; } 
 
@@ -47,6 +47,8 @@
         border:1px solid black;
       //cursor: ew-resize;
       background: #000000;
+      color: #000;
+      background-color: #000;
       
       box-shadow: -20vw 0 0 20vw #000000;
     }
@@ -74,6 +76,7 @@ canvas {
   z-index: 80 !important;
   position: absolute;
   top: 0px;
+  bottom: 0;
 }
 
 .mediaControls{
@@ -90,3 +93,13 @@ canvas {
     -webkit-transition: all 0.1s;
   // /position: absolute;
 }
+
+#volume{
+  cursor: pointer;
+}
+
+
+
+
+
+

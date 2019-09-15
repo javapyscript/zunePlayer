@@ -23,6 +23,7 @@ import { ArtistsService } from './services/artists.service';
 import { PlayerService } from './services/player.service';
 import { HttpClientModule, HttpClientJsonpModule  } from '@angular/common/http';
 import { AlbumartComponent } from './UI/body/music/albums/albumart/albumart.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 const appRoutes: Routes = [
   { 
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    Ng5SliderModule,
     RouterModule.forRoot(
       appRoutes,
       //{ enableTracing: true } // <-- debugging purposes only

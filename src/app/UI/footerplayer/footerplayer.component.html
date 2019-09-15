@@ -1,12 +1,9 @@
 <div class="container">
     <div class="row">
-      <div class="col-4"></div>
+      <div class="col-4">
+          
+      </div>
       <div class="col-4 flexCenter">
-        <!--audio controls>
-            
-            <source src="assets/music/PrimaDonna Girl.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio-->
         <canvas #canvas></canvas>
         
         
@@ -33,9 +30,22 @@
         
       </div>
       <div class="col-4 flexRight">
-        <a (click)="this.artistsData.playPrevSong()" class="rew" style="padding:2px;"><img src="assets/icons/rew.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
-        <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.tempSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
-        <a (click)="this.artistsData.playNextSong()" class="ff" style="padding:2px;"><img src="assets/icons/ff.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
+        <div class="row flexRight">
+          <div class="col-6 flexCenter">
+            <input id="volume" style="width:80%" (change)="this.changeVolume($event)" type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                  
+          </div>
+          <div class="col-6">
+            <div class="row flexRight">
+                <a (click)="this.artistsData.playPrevSong()" class="rew" style="padding:2px;"><img src="assets/icons/rew.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
+                <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.tempSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
+                <a (click)="this.artistsData.playNextSong()" class="ff" style="padding:2px;"><img src="assets/icons/ff.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
+            </div>
+          </div>
+            
+        </div>
+        
+        
       </div>
     </div>
 </div>
