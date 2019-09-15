@@ -1,0 +1,113 @@
+#tableDiv{
+    padding:0;
+    overflow:hidden; overflow-y:scroll;
+    height: 67vh;
+    padding: 0 3rem;
+}
+
+table{
+    border-collapse: collapse; 
+}
+
+th{
+    //padding:0 1rem;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding-bottom: 1.2rem;
+    padding-left: 0.5rem;
+}
+
+tr{
+    padding:0.1rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+}
+
+tr:hover{
+    //color: #2693ff;
+    cursor: default;
+    background-color: #d8d8d9;
+}
+
+tr.active{
+    background-color: #d8d8d9;
+    color: #ef21a7;
+}
+
+td{
+    border-right: solid 1px  rgb(179, 179, 179);
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+
+/* SCROLLBAR */
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(194, 194, 194);
+    border: 5px solid transparent;
+    background-clip: content-box;   /* THIS IS IMPORTANT */
+    //@at-rootheight: 40px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(179, 179, 179);
+    //border: 1px solid rgb(0,0,0);
+    
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(128, 128, 128);
+    //border: 1px solid rgb(0,0,0);
+    
+}
+
+.slide-right{
+-webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+    @keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(-1em);
+                transform: translateX(-1em);
+    }
+    100% {
+        -webkit-transform: translateX(0em);
+                transform: translateX(0em);
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+
+    .container { max-width: 1500px; } 
+
+}

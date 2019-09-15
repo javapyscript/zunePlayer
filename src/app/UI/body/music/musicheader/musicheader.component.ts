@@ -12,7 +12,7 @@ export class MusicheaderComponent implements OnInit {
     {name: "GENRES", status: "inactive"},
     {name: "ALBUMS", status: "inactive"},
     {name: "SONGS", status: "inactive"},
-    {name: "PLAYLISTS", status: "inactive"}
+    //{name: "PLAYLISTS", status: "inactive"}
   ];
 
   constructor() { }

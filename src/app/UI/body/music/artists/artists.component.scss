@@ -9,7 +9,7 @@
 }
 
 .albumArtDiv{
-
+    
     float:left;
     position: relative;
     width: 20%;
@@ -23,6 +23,7 @@
 }
 
 .content {
+    
     position:absolute;
     justify-content: center;
     height:90%; /* = 100% - 2*5% padding */
@@ -144,8 +145,8 @@
 }
 
 .slide-right{
-    -webkit-animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: slide-right 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 ul{
@@ -207,9 +208,9 @@ li.active{
 }
 
 @-webkit-keyframes slide-right {
-    0% {
-        -webkit-transform: translateX(-1em);
-                transform: translateX(-1em);
+   0% {
+        -webkit-transform: translateX(-3em);
+                transform: translateX(-3em);
     }
     100% {
         -webkit-transform: translateX(0em);
@@ -218,8 +219,8 @@ li.active{
 }
     @keyframes slide-right {
     0% {
-        -webkit-transform: translateX(-1em);
-                transform: translateX(-1em);
+        -webkit-transform: translateX(-3em);
+                transform: translateX(-3em);
     }
     100% {
         -webkit-transform: translateX(0em);

@@ -10,13 +10,16 @@ export class ArtistsService {
 
   albums = [];
   filteredAlbums = [];
+  currPlaylist = [];
   songs = [];
   filteredSongs = [];
-  ;
+  genres = [];
+  genresList = [];
   currAlbum = {collectionId : 0, artworkUrl60:"assets/icons/blankImage.png"};
   currAlbumChange = new Subject<null>();
   songPlaying = {};
   currSongChange = new Subject<any>();
+  currentGenreChange = new Subject<any>();
 
   artists = [
     {"highlighted":false,"wrapperType":"artist", "artistType":"Artist", "artistName":"Enrique Iglesias", "artistLinkUrl":"https://music.apple.com/us/artist/enrique-iglesias/90895?uo=4", "artistId":90895, "amgArtistId":169286, "primaryGenreName":"Pop", "primaryGenreId":14},
@@ -59,6 +62,14 @@ export class ArtistsService {
               
             });
             this.songs.push(...tracks);
+            this.songs.forEach(song=>{
+              if(!this.genresList.includes(song.primaryGenreName)){
+                this.genres.push({name:song.primaryGenreName, highlighted: false});
+                this.genresList.push(song.primaryGenreName);
+               
+              }
+            });
+            console.log(this.genres);
             //this.filteredSongs.push(...tracks);
           });
         });
@@ -148,6 +159,29 @@ export class ArtistsService {
     });
     this.filteredSongs = newSongs;
     //this.artistsData.filteredAlbums = this.albums;
+  }
+
+  selectAlbumsByGenre(genre){
+    this.genres.forEach(gen=>{
+      gen.highlighted = false;
+    });
+    genre.highlighted = true;
+    let newAlbumNames = [];
+    this.filteredAlbums = this.albums.filter(album=>{
+      return album.primaryGenreName === genre.name;
+    });
+    this.filteredSongs = [];
+    this.filteredAlbums.forEach(filteredAlbum=>{
+      newAlbumNames.push(filteredAlbum.collectionId);
+    });
+    let newSongs = [];
+    this.songs.forEach(filteredSong=>{
+      if(newAlbumNames.includes(filteredSong.collectionId)){
+        newSongs.push(filteredSong);
+      }
+    });
+    this.filteredSongs = newSongs;
+    this.currentGenreChange.next();
   }
 
   

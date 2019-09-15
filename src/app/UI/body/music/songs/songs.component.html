@@ -1,3 +1,27 @@
-<p>
-  songs works!
-</p>
+
+
+  <!--div class="row"-->
+    <!--div class="col-12"-->
+        <div id="tableDiv" style="overflow-x:auto;">
+            <table class="slide-right">
+              <tr class="slide-right">
+                <th>SONG</th>
+                <th>SONG ARTIST</th>
+                <TH>ALBUM</TH>
+                <TH>GENRE</TH>
+              </tr>
+              <tr class="noselect slide-right"  [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">
+                <td>{{song.trackName}}</td>
+                <td>{{song.artistName}}</td>
+                <td>{{song.collectionName}}</td>
+                <td>{{song.primaryGenreName}}</td>
+              </tr>
+            </table>
+          </div>
+          <br>
+          <br>
+    <!--/div-->
+  <!--/div-->
+
+
+  

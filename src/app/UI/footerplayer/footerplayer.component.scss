@@ -83,5 +83,10 @@ canvas {
 
 #albumArt{
   z-index: 1000 !important;
+  border: 0.5px solid  #fff;
+    -webkit-box-shadow: 0 0 5px #000;
+        box-shadow: 0 0 5px #000;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
   // /position: absolute;
 }

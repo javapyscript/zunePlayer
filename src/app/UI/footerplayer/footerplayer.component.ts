@@ -33,6 +33,7 @@ export class FooterplayerComponent implements OnInit {
   constructor(public renderer: Renderer2, public player:PlayerService, public artistsData: ArtistsService) { }
 
   ngOnInit() {
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 
     this.artistsData.currSongChange.subscribe(song=>{
       this.currSongObj = song;
@@ -47,9 +48,9 @@ export class FooterplayerComponent implements OnInit {
     //this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
     this.tempSong = new Audio();
     //this.currSong.crossOrigin = "anonymous";
-    /*this.tempSong.crossOrigin = "anonymous";
+    this.tempSong.crossOrigin = "anonymous";
     this.context = new AudioContext();
-    this.src = this.context.createMediaElementSource(this.tempSong);*/
+    this.src = this.context.createMediaElementSource(this.tempSong);
     
     let simple = this.renderer.listen(this.trackSeekBar.nativeElement, 'change', (evt) => {
       this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
@@ -107,8 +108,8 @@ export class FooterplayerComponent implements OnInit {
     }*/
 
     
-
-    /*let analyser = this.context.createAnalyser();
+    this.context.resume();
+    let analyser = this.context.createAnalyser();
     this.canvas.nativeElement.width = window.innerWidth;
     this.canvas.nativeElement.height = window.innerHeight;
     let ctx = this.canvas.nativeElement.getContext("2d");
@@ -141,7 +142,7 @@ export class FooterplayerComponent implements OnInit {
         let r = barHeight + (25 * (i/bufferLength));
         let g = 250 * (i/bufferLength);
         let b = 50;
-        let a = 0.1;
+        let a = 0.4;
 
         ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + a + ")";
         ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
@@ -151,7 +152,7 @@ export class FooterplayerComponent implements OnInit {
     }
 
     //audio.play();
-    renderFrame();*/
+    renderFrame();
     this.tempSong.play();
   }
 

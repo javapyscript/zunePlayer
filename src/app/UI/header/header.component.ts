@@ -10,8 +10,8 @@ export class HeaderComponent implements OnInit {
 
   public menuItems = [
     {name: "music", status: "active"},
-    {name: "videos", status: "inactive"},
-    {name: "pictures", status: "inactive"}
+    /*{name: "videos", status: "inactive"},
+    {name: "pictures", status: "inactive"}*/
   ];
 
   constructor() { }

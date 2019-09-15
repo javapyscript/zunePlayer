@@ -5,11 +5,21 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class PlayerService {
-  constructor() {}
+
+  constructor() {
+    
+   
+  }
+
+  
 
   public playTrackSource = new Subject<string>();
   public pauseTrackSource = new Subject();
   public trackEndedSource = new Subject();
+
+  
+  
+  
 
   playTrack$ = this.playTrackSource.asObservable();
   pauseTrack$ = this.pauseTrackSource.asObservable();
@@ -17,6 +27,7 @@ export class PlayerService {
 
   playTrack(previewUrl: string) {
     this.playTrackSource.next(previewUrl);
+   
   }
 
   pauseTrack() {

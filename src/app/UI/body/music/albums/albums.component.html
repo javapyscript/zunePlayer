@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-7 slide-right" style="padding-left:2rem;">
+    <div class="col-7 slide-right" >
       <p class="listTitle">ALBUMS</p>
-      <ul class="bordered-col">
+      <ul class="bordered-col slide-right">
         
           <div class="row albumArtRow">
             <div class="albumArtDiv" *ngFor="let album of this.artistsData.filteredAlbums; let ind=index;">
@@ -24,7 +24,7 @@
     </div>
     <div class="col-5 slide-right">
       <p class="listTitle">SONGS</p>
-      <ul class="bordered-col">
+      <ul class="bordered-col slide-right">
         <li class="noselect lifont" [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">{{song.trackName}}</li>
       </ul>
     </div>

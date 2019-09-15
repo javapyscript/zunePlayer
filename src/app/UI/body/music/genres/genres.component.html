@@ -1,3 +1,42 @@
-<p>
-  genres works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-2 slide-right">
+        <p class="listTitle">GENRES</p>
+        <ul class="bordered-col slide-right">
+          <li [ngClass]="{active: genre.highlighted}" (click)="this.artistsData.selectAlbumsByGenre(genre)" class="noselect lifont" *ngFor="let genre of this.artistsData.genres">{{genre.name}}</li>
+        </ul>
+      </div>
+      <div class="col-5 slide-right" style="padding-left:2rem;">
+        <p class="listTitle">ALBUMS BY ARTIST</p>
+        <div class="genreDiv">
+            <div class="artistDiv" *ngFor="let artist of this.artistsByGenre">
+                <h5 style="padding:0 1rem; font-weight: bolder">{{artist.artistName}}</h5>
+                
+                <div class="row albumArtRow">
+                    <div class="albumArtDiv" *ngFor="let album of artist.albums">
+                        <div class="content">
+                          <div class="albumArtImage" [ngClass]="{'selectedAlbum': this.artistsData.currAlbum.collectionId === album.collectionId}">
+                              <img class="rs" (click)="this.artistsData.filterTracks(album)" [src]="album.artworkUrl100"/>
+                          </div>
+                          <div class="albumArtDescription">
+                              <span>{{album.collectionName}}</span>
+                                
+                              <span>{{album.artistName}}</span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+        
+        
+      </div>
+      <div class="col-5 slide-right">
+        <p class="listTitle">SONGS</p>
+        <ul class="bordered-col slide-right">
+          <li class="noselect lifont" [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">{{song.trackName}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
