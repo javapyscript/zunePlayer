@@ -1,5 +1,5 @@
 Demo:
-https://angularcod3.github.io/zunePlayer/
+https://javapyscript.github.io/zunePlayer/
 
 
 # ZunePlayer
