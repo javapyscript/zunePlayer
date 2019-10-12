@@ -11,7 +11,7 @@ export class GENRESComponent implements OnInit {
   artistsByGenre = [];
   artistsList = [];
 
-  constructor(private artistsData:ArtistsService) { }
+  constructor(public artistsData:ArtistsService) { }
 
   ngOnInit() {
     this.artistsData.filteredSongs = this.artistsData.songs;

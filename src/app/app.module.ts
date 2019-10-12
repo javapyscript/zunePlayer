@@ -77,7 +77,7 @@ const appRoutes: Routes = [
     HttpClientJsonpModule,
     Ng5SliderModule,
     RouterModule.forRoot(
-      appRoutes,
+      appRoutes, {useHash: true}
       //{ enableTracing: true } // <-- debugging purposes only
     )
   ],
