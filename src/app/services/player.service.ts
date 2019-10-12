@@ -6,6 +6,10 @@ import { Subject } from 'rxjs';
 })
 export class PlayerService {
 
+  currPlayingSong = new Audio();
+  nowPlayingVisible = false;
+  nowPlayingVisibilityChange = new Subject<boolean>();
+
   constructor() {
     
    

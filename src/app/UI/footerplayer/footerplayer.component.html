@@ -11,14 +11,17 @@
         <div class="container mediaControls flexCenter">
           <div class="row">
             <div class="col-2">
-                <img id="albumArt" src={{this.currAlbum.artworkUrl60}} style="padding:2px;height:2.5rem;width:2.5rem"/>
+              <a [routerLink]="'/nowPlaying'">
+                  <img  id="albumArt" src={{this.currAlbum.artworkUrl60}} style="padding:2px;height:2.5rem;width:2.5rem"/>
+              </a>
+                
             </div>
             <div class="col-10">
               <div class="row" style="font-size:0.8rem;">
                 {{this.currSongObj.trackName}}
               </div>
               <div class="row">
-                  <input #trackSeekbar type="range" id="seek" value="0" [max]="this.tempSong.duration" [(ngModel)]="this.curtime" (change)="this.seekTrack($event)"/>
+                  <input #trackSeekbar type="range" id="seek" value="0" [max]="this.player.currPlayingSong.duration" [(ngModel)]="this.curtime" (change)="this.seekTrack($event)"/>
               </div>
               <div class="row" style="font-size:0.8rem;">
                 {{this.timePassed}}
@@ -38,7 +41,7 @@
           <div class="col-6">
             <div class="row flexRight">
                 <a (click)="this.artistsData.playPrevSong()" class="rew" style="padding:2px;"><img src="assets/icons/rew.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
-                <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.tempSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
+                <a (click)="this.controlTrack()" class="play" style="padding:2px;"><img [src]="this.player.currPlayingSong.paused? 'assets/icons/play.png' : 'assets/icons/pause.png'" alt="" style="width:2rem; height:2rem" /></a>
                 <a (click)="this.artistsData.playNextSong()" class="ff" style="padding:2px;"><img src="assets/icons/ff.png" alt="" style="width:1.4rem; height:1.4rem" /></a>
             </div>
           </div>
@@ -50,6 +53,35 @@
     </div>
 </div>
 
+
+
+<!--div [style.display]="showModal ? 'block' : 'none'" #nowPlayingModal class="modal fade modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div-->
+
+  
 
 
 

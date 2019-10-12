@@ -14,17 +14,15 @@ import { Options } from 'ng5-slider';
 export class FooterplayerComponent implements OnInit {
   //currSong;
 
-  options: Options = {
-    floor: 0,
-    ceil: 100
-  };
-
+  @ViewChild('nowPlayingModal')
+  nowPlayingModal:ElementRef
+  display = 'none';
 
   curtime = 0;
   timePassed:string = "0:0";
   timeLeft = 0;
   currSongObj = {'trackName': "No Song selected"}
-  tempSong;
+  //tempSong;
   volume = 50;
 
   //visualization vars
@@ -57,28 +55,31 @@ export class FooterplayerComponent implements OnInit {
     });
 
     //this.currSong = new Audio('assets/music/PrimaDonna Girl.mp3');
-    this.tempSong = new Audio();
-    this.tempSong.volume = this.volume / 100;
+    //this.tempSong = new Audio();
+    this.player.currPlayingSong.volume = this.volume / 100;
+    //this.tempSong.volume = this.volume / 100;
     //this.currSong.crossOrigin = "anonymous";
-    this.tempSong.crossOrigin = "anonymous";
+    this.player.currPlayingSong.crossOrigin = "anonymous"
+    //this.tempSong.crossOrigin = "anonymous";
     this.context = new AudioContext();
-    this.src = this.context.createMediaElementSource(this.tempSong);
+    //this.src = this.context.createMediaElementSource(this.tempSong);
+    this.src = this.context.createMediaElementSource(this.player.currPlayingSong);
     
     let simple = this.renderer.listen(this.trackSeekBar.nativeElement, 'change', (evt) => {
-      this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
+      this.player.currPlayingSong.currentTime = this.trackSeekBar.nativeElement.value;
       
-      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.tempSong.duration);
+      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.player.currPlayingSong.duration.toString());
     });
 
-    this.tempSong.addEventListener('timeupdate', ()=>{
-      let minutes = Math.floor(parseInt(this.tempSong.currentTime, 10) / 60);
-      let seconds = parseInt(this.tempSong.currentTime, 10) - minutes * 60;
+    this.player.currPlayingSong.addEventListener('timeupdate', ()=>{
+      let minutes = Math.floor(parseInt(this.player.currPlayingSong.currentTime.toString(), 10) / 60);
+      let seconds = parseInt(this.player.currPlayingSong.currentTime.toString(), 10) - minutes * 60;
       this.timePassed = minutes.toString() + ":" + seconds.toString();
-      this.curtime = parseInt(this.tempSong.currentTime, 10);
+      this.curtime = parseInt(this.player.currPlayingSong.currentTime.toString(), 10);
       this.renderer.setAttribute(this.trackSeekBar.nativeElement, "value", this.curtime.toString());
     });
 
-    this.tempSong.addEventListener('ended', ()=>{
+    this.player.currPlayingSong.addEventListener('ended', ()=>{
       console.log("Finished");
       this.artistsData.playNextSong();
     });
@@ -93,7 +94,7 @@ export class FooterplayerComponent implements OnInit {
   changeVolume(event){
     console.log(event.target.value);
     this.volume = event.target.value;
-    this.tempSong.volume = this.volume / 100;
+    this.player.currPlayingSong.volume = this.volume / 100;
       
   
   }
@@ -101,24 +102,24 @@ export class FooterplayerComponent implements OnInit {
 
 
   controlTrack(){
-    console.log(this.tempSong);
+    console.log(this.player.currPlayingSong);
 
-    if(this.tempSong.paused){
+    if(this.player.currPlayingSong.paused){
       //this.currSong.play();
-      this.tempSong.play();
+      this.player.currPlayingSong.play();
     }
     else{
-      this.tempSong.pause();
+      this.player.currPlayingSong.pause();
     }
   }
 
   stopTrack(){
-    this.tempSong.pause();
+    this.player.currPlayingSong.pause();
   }
 
   startTrack(previewUrl){
-    this.tempSong.src = previewUrl;
-    this.tempSong.volume = this.volume / 100;
+    this.player.currPlayingSong.src = previewUrl;
+    this.player.currPlayingSong.volume = this.volume / 100;
     
 
     /*try {
@@ -176,16 +177,27 @@ export class FooterplayerComponent implements OnInit {
 
     //audio.play();
     renderFrame();
-    this.tempSong.play();
+    this.player.currPlayingSong.play();
   }
 
   seekTrack(event:boolean){
     
-      this.tempSong.currentTime = this.trackSeekBar.nativeElement.value;
-      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.tempSong.duration);
+      this.player.currPlayingSong.currentTime = this.trackSeekBar.nativeElement.value;
+      this.renderer.setAttribute(this.trackSeekBar.nativeElement, "max", this.player.currPlayingSong.duration.toString());
       //this.trackSeekBar.nativeElement.attr("max", this.currSong.duration); 
    
     
+  }
+
+
+  showModal(){
+    //this.nowPlayingModal.nativeElement.show();
+    //this.display = 'block';
+    this.display = 'block';
+  }
+
+  closeModal(){
+    this.display = 'none';
   }
 
 

@@ -24,6 +24,7 @@ import { PlayerService } from './services/player.service';
 import { HttpClientModule, HttpClientJsonpModule  } from '@angular/common/http';
 import { AlbumartComponent } from './UI/body/music/albums/albumart/albumart.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { NowplayingComponent } from './UI/body/music/nowplaying/nowplaying.component';
 
 const appRoutes: Routes = [
   { 
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: '/music/ARTISTS',
     pathMatch: 'prefix'
-  }
+  },
+  {path:'nowPlaying', component: NowplayingComponent}
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -64,7 +66,8 @@ const appRoutes: Routes = [
     ALBUMSComponent,
     PLAYLISTSComponent,
     FooterplayerComponent,
-    AlbumartComponent
+    AlbumartComponent,
+    NowplayingComponent
   ],
   imports: [
     BrowserModule,
