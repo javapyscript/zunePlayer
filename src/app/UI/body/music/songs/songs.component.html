@@ -11,7 +11,8 @@
                 <TH>ALBUM</TH>
                 <TH>GENRE</TH>
               </tr>
-              <tr class="noselect slide-right"  [ngClass]="{active: song.highlighted}"  (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">
+              <tr class="noselect slide-right"  [ngClass]="{active: song.highlighted}"  
+                (dblclick)="this.artistsData.playTrack(song)" *ngFor="let song of this.artistsData.filteredSongs">
                 <td>{{song.trackName}}</td>
                 <td>{{song.artistName}}</td>
                 <td>{{song.collectionName}}</td>

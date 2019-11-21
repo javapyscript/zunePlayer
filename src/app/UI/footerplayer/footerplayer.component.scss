@@ -27,20 +27,24 @@
       width:20vw;
       -webkit-appearance: none;
       background-color: #ececec;
+      border: 1px solid white;
+      height: 5px; 
     }
 
     input[type='range']:focus{
         outline: none;
     }
     
-    input[type='range']::-webkit-slider-runnable-track {
+    input[type='range']::-webkit-slider-runnable-track
+     {
       height: 5px;
       -webkit-appearance: none;
       color: #000000;
       margin-top: -1px;
     }
     
-    input[type='range']::-webkit-slider-thumb {
+    input[type='range']::-webkit-slider-thumb
+    {
         -webkit-appearance: none;
         width: 3px;
         height: 15px;
@@ -56,11 +60,36 @@
 }
 /** FF*/
 input[type="range"]::-moz-range-progress {
-  background-color: #43e5f7; 
+  background-color: #000000; 
 }
-input[type="range"]::-moz-range-track {  
-  background-color: #9a905d;
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
 }
+
+input[type=range]::-moz-range-thumb {
+     width: 3px;
+        height: 15px;
+        border:1px solid black;
+      //cursor: ew-resize;
+      background: #000000;
+      color: #000;
+      background-color: #000;
+      
+      box-shadow: -20vw 0 0 20vw #000000;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+
+
 /* IE*/
 input[type="range"]::-ms-fill-lower {
   background-color: #43e5f7; 
@@ -81,7 +110,9 @@ canvas {
 
 .mediaControls{
   z-index: 1000 !important;
-  //position: absolute;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
 }
 
 #albumArt{

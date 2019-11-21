@@ -13,6 +13,7 @@ export class ArtistsService {
   currPlaylist = [];
   songs = [];
   filteredSongs = [];
+
   genres = [];
   genresList = [];
   currAlbum = {collectionId : 0, artworkUrl60:"assets/icons/blankImage.png"};
@@ -82,12 +83,12 @@ export class ArtistsService {
 
   getSongIndex(){
     let songIndex; 
-    this.filteredSongs.forEach((song, index)=>{
+    this.currPlaylist.forEach((song, index)=>{
       if(song.highlighted === true){
         songIndex = index;
       }
     });
-    this.filteredSongs.forEach(song=>{
+    this.currPlaylist.forEach(song=>{
       song.highlighted = false;
     });
     return songIndex;
@@ -96,7 +97,7 @@ export class ArtistsService {
   playPrevSong(){
     let songIndex = this.getSongIndex();
     if(songIndex!== 0){
-      let prevSong = this.filteredSongs[songIndex - 1];
+      let prevSong = this.currPlaylist[songIndex - 1];
       prevSong.highlighted = true;
       this.player.playTrack(prevSong.previewUrl);
       this.currSongChange.next(prevSong);
@@ -106,8 +107,8 @@ export class ArtistsService {
 
   playNextSong(){
     let songIndex = this.getSongIndex();
-    if(songIndex!== this.filteredSongs.length - 1){
-      let nextSong = this.filteredSongs[songIndex+1];
+    if(songIndex!== this.currPlaylist.length - 1){
+      let nextSong = this.currPlaylist[songIndex+1];
       nextSong.highlighted = true;
       this.player.playTrack(nextSong.previewUrl);
       this.currSongChange.next(nextSong);
@@ -116,7 +117,8 @@ export class ArtistsService {
   }
 
   playTrack(song){
-    this.filteredSongs.forEach(currsong=>{
+    this.currPlaylist = this.filteredSongs.slice();
+    this.currPlaylist.forEach(currsong=>{
       currsong.highlighted = false;
     });
     song.highlighted = true;
